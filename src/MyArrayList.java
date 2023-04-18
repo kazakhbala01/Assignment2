@@ -31,4 +31,15 @@ public class MyArrayList{
             throw new IndexOutOfBoundsException();
         }
     }
+    public void clear(){
+        this.arr = new int[5];
+        this.size = 0;
+    }
+    public void delete(int index){
+        checkIndex(index);
+        for(int i= index + 1; i<size; i++){
+            arr[i-1] = arr[i];
+        }
+        size--;
+    }
 }
