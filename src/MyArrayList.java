@@ -1,16 +1,16 @@
 public class MyArrayList<T> implements MyList<T>{
-    private Object[] arr;
+    private T[] arr;
     private int size;
     MyArrayList(){
-        this.arr=new Object[5];
+        this.arr=(T[]) new Object[5];
         this.size=0;
     }
     public void increaseBuffer(){
-        Object[] newArr= new Object[arr.length*2];
-        for (int i=0;i<arr.length;i++){
-            newArr[i]= arr[i];
+        T[] newArr = (T[]) new Object[arr.length*2];
+        for(int i=0; i< arr.length; i++){
+            newArr[i]=arr[i];
         }
-        arr=newArr;
+        arr = newArr;
     }
     public void checkIndex(int index){
         if(index < 0 || index>=size){
@@ -47,7 +47,7 @@ public class MyArrayList<T> implements MyList<T>{
     }
 
     public void clear(){
-        this.arr = new Object[5];
+        this.arr = (T[]) new Object[5];
         this.size = 0;
     }
 
@@ -70,14 +70,14 @@ public class MyArrayList<T> implements MyList<T>{
     @Override
     public void sort(){
         System.out.println("new sorted array: ");
-        for (int i = 0; i < arr.length; i++)
+        for (int i = 0; i < size; i++)
         {
-            for (int j = i + 1; j < arr.length; j++)
+            for (int j = i + 1; j < size; j++)
             {
-                int tmp;
+                T tmp;
                 if ((int)arr[i] > (int)arr[j])
                 {
-                    tmp = (int)arr[i];
+                    tmp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = tmp;
                 }
