@@ -25,7 +25,7 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public boolean contains(Object o) {
-        return false;
+        return indexOf(o) >= 0;
     }
 
     @Override
@@ -36,15 +36,6 @@ public class MyArrayList<T> implements MyList<T>{
         arr[size++]=item;
     }
 
-    @Override
-    public void add(T item, int index) {
-
-    }
-
-    @Override
-    public boolean remove(T item) {
-        return false;
-    }
 
     @Override
     public void remove(int index) {
@@ -83,7 +74,7 @@ public class MyArrayList<T> implements MyList<T>{
         {
             for (int j = i + 1; j < arr.length; j++)
             {
-                int tmp = 0;
+                int tmp;
                 if ((int)arr[i] > (int)arr[j])
                 {
                     tmp = (int)arr[i];
