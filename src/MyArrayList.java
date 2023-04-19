@@ -1,45 +1,97 @@
-public class MyArrayList{
-    private int[] arr;
+public class MyArrayList<T> implements MyList<T>{
+    private Object[] arr;
     private int size;
     MyArrayList(){
-        this.arr=new int[5];
+        this.arr=new Object[5];
         this.size=0;
     }
-    public void add(int element){
-        if(size == arr.length){
-            increaseBuffer();
-        }
-        arr[size++]=element;
-    }
     public void increaseBuffer(){
-        int[] newArr= new int[arr.length*2];
+        Object[] newArr= new Object[arr.length*2];
         for (int i=0;i<arr.length;i++){
-            newArr[i]=arr[i];
+            newArr[i]= arr[i];
         }
         arr=newArr;
-    }
-    public int getElement(int index) {
-        checkIndex(index);
-        return arr[index];
-    }
-
-    public int getSize() {
-        return size;
     }
     public void checkIndex(int index){
         if(index < 0 || index>=size){
             throw new IndexOutOfBoundsException();
         }
     }
-    public void clear(){
-        this.arr = new int[5];
-        this.size = 0;
+
+    @Override
+    public int size() {
+        return size;
     }
-    public void delete(int index){
+
+    @Override
+    public boolean contains(Object o) {
+        return false;
+    }
+
+    @Override
+    public void add(T item) {
+        if(size == arr.length){
+            increaseBuffer();
+        }
+        arr[size++]=item;
+    }
+
+    @Override
+    public void add(T item, int index) {
+
+    }
+
+    @Override
+    public boolean remove(T item) {
+        return false;
+    }
+
+    @Override
+    public void remove(int index) {
         checkIndex(index);
         for(int i= index + 1; i<size; i++){
             arr[i-1] = arr[i];
         }
         size--;
+    }
+
+    public void clear(){
+        this.arr = new Object[5];
+        this.size = 0;
+    }
+
+    @Override
+    public T get(int index) {
+        checkIndex(index);
+        return (T) arr[index];
+    }
+
+    @Override
+    public int indexOf(Object o) {
+        return (int)arr[0];
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        return (int)arr[size-1];
+    }
+
+    @Override
+    public void sort(){
+        System.out.println("new sorted array: ");
+        for (int i = 0; i < arr.length; i++)
+        {
+            for (int j = i + 1; j < arr.length; j++)
+            {
+                int tmp = 0;
+                if ((int)arr[i] > (int)arr[j])
+                {
+                    tmp = (int)arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = tmp;
+                }
+            }
+            System.out.print(arr[i]+" ");
+        }
     }
 }
