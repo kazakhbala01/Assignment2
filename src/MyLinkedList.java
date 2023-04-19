@@ -26,8 +26,8 @@ public class MyLinkedList<T> implements MyList<T> {
             tail.next = newNode;
             tail = newNode;
         }
-            size++;
-        }
+        size++;
+    }
 
     @Override
     public void remove(int index) {
@@ -48,15 +48,15 @@ public class MyLinkedList<T> implements MyList<T> {
         }
         size--;
         System.out.println("Removed element is: "+removedElement);
-        }
+    }
 
-        public T get(int index) {
-            MyNode<T> current = head;
-            for (int i = 0; i < index; i++) {
-                current = current.next;
-            }
-            return current.data;
+    public T get(int index) {
+        MyNode<T> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
         }
+        return current.data;
+    }
 
     @Override
     public int indexOf(Object o) {
@@ -92,16 +92,27 @@ public class MyLinkedList<T> implements MyList<T> {
 
         return -1;
     }
-
     @Override
     public void sort() {
         return;
     }
 
+    /**
+     * A node in a linked list.
+     *
+     * @param <E> the type of element stored in this node
+     */
     private static class MyNode<E> {
-         MyNode<E> prev;
-        E data;
-            MyNode<E> next;
-            MyNode(E data){
-            this.data=data;}
-        }}
+        MyNode<E> prev; // reference to the previous node in the list
+        E data; // the element stored in this node
+        MyNode<E> next; // reference to the next node in the list
+
+        /**
+         * Constructs a new node with the specified element.
+         *
+         * @param data the element to store in this node
+         */
+        MyNode(E data) {
+            this.data = data;
+        }
+    }}
