@@ -115,4 +115,20 @@ public class MyArrayList<T> implements MyList<T>{
             System.out.print(arr[i]+" ");
         }
     }
+    public void getAll(){
+        System.out.println("---");
+        for(int i=0;i<size;i++){
+            System.out.println(arr[i]);
+        }
+    }
+    public void removeDuplicates(){
+        for (int i=0;i<size;i++){
+            T dup=arr[i];
+            for(int j=i+1;j<size;j++){
+                if(dup==arr[j]){
+                    remove(j);
+                }
+            }
+        }
+    }
 }

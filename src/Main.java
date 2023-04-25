@@ -3,11 +3,16 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         MyArrayList<Integer> ms=new MyArrayList<>();
+        ms.add(2);
+        ms.add(2);
+        ms.add(3);
+        ms.add(4);
+        ms.add(4);
         ms.add(5);
-        ms.add(6);
-        ms.add(7);
-        ms.add(8);
-        ms.add(1);
+        ms.add(4);
         System.out.println(ms.size());
+        ms.removeDuplicates();
+        System.out.println(ms.size());
+        ms.getAll();
     }
 }
